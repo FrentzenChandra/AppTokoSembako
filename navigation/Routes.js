@@ -1,6 +1,6 @@
 const Routes = {
   Login: 'Login',
-  SignIn: 'SignIn',
+  SignUp: 'SignUp',
 };
 
 export default Routes;

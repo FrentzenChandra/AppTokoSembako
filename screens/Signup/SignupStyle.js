@@ -6,7 +6,7 @@ import {
   verticalScale,
 } from '../../assets/style/scaling';
 
-const LoginStyle = StyleSheet.create({
+const signupStyle = StyleSheet.create({
   headerBgImage: {
     height: verticalScale(175),
   },
@@ -47,11 +47,11 @@ const LoginStyle = StyleSheet.create({
     marginHorizontal: horizontalScale(30),
     marginTop: verticalScale(10),
   },
-  loginButton: {
+  signupButton: {
     backgroundColor: '#2F80ED',
     marginHorizontal: horizontalScale(30),
   },
   footerImg: {marginTop: 50},
 });
 
-export default LoginStyle;
+export default signupStyle;

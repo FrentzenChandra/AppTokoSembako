@@ -6,6 +6,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Login from '../screens/Login/Login';
 // import SingIn from '../screens/SignIn/SingIn';
 import Routes from './Routes';
+import Signup from '../screens/Signup/Signup';
 // import Home from '../screens/Home/Home';
 // import Donate from '../screens/Donate/Donate';
 
@@ -27,6 +28,7 @@ export const UnAuthicated = () => {
       initialRouteName={Routes.Login}
       screenOptions={{header: () => {}}}>
       <Stack.Screen name={Routes.Login} component={Login} />
+      <Stack.Screen name={Routes.SignUp} component={Signup} />
     </Stack.Navigator>
   );
 };
