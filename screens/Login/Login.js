@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {
-  Button,
   Image,
   ImageBackground,
   SafeAreaView,
@@ -81,7 +80,11 @@ const Login = ({navigation}) => {
           placeholder="Password*"
           style={globalStyle.input}></TextInput>
       </View>
-      <TouchableOpacity style={[globalStyle.button, LoginStyle.loginButton]}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate(Routes.Kasir);
+        }}
+        style={[globalStyle.button, LoginStyle.loginButton]}>
         <Text style={[globalStyle.buttonTxt, {color: 'white'}]}>Sign In</Text>
       </TouchableOpacity>
       <Image

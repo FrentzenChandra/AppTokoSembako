@@ -5,6 +5,7 @@ import {
   horizontalScale,
   verticalScale,
 } from '../../assets/style/scaling';
+import colors from '../../assets/colors/colors';
 
 const signupStyle = StyleSheet.create({
   headerBgImage: {
@@ -39,7 +40,7 @@ const signupStyle = StyleSheet.create({
   },
   ruler: {
     borderWidth: 0.7,
-    borderColor: '#828282',
+    borderColor: colors.grey,
     height: 1,
     width: '40%',
   },
@@ -48,7 +49,7 @@ const signupStyle = StyleSheet.create({
     marginTop: verticalScale(10),
   },
   signupButton: {
-    backgroundColor: '#2F80ED',
+    backgroundColor: colors.blue,
     marginHorizontal: horizontalScale(30),
   },
   footerImg: {marginTop: 50},

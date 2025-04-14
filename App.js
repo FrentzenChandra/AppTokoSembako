@@ -4,6 +4,7 @@ import {Text, SafeAreaView} from 'react-native';
 import BootSplash from 'react-native-bootsplash';
 
 const App = () => {
+
   return (
     <NavigationContainer
       onReady={() => {

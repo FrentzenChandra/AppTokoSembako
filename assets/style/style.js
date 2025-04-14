@@ -1,14 +1,14 @@
 import {StyleSheet} from 'react-native';
 import findFonts from '../fonts/helper/helper';
 import {fontScale, horizontalScale, verticalScale} from './scaling';
+import colors from '../colors/colors';
 
 const globalStyle = StyleSheet.create({
   whiteBg: {
-    backgroundColor: '#FDFAF6',
-    flex: 1,
+    backgroundColor: colors.white,
   },
   button: {
-    backgroundColor: '#FDFAF6',
+    backgroundColor: colors.white,
     paddingHorizontal: horizontalScale(16),
     paddingVertical: horizontalScale(6),
     justifyContent: 'center',
@@ -16,7 +16,7 @@ const globalStyle = StyleSheet.create({
     borderRadius: horizontalScale(4),
   },
   buttonTxt: {
-    color: '#2F80ED',
+    color: colors.blue,
     fontFamily: findFonts('Rubik', 500),
     fontSize: fontScale(20),
   },
@@ -25,7 +25,7 @@ const globalStyle = StyleSheet.create({
     marginBottom: verticalScale(5),
   },
   input: {
-    borderColor: '#828282',
+    borderColor: colors.grey,
     borderWidth: 1,
     borderRadius: horizontalScale(6),
     paddingVertical: horizontalScale(5),
@@ -33,6 +33,10 @@ const globalStyle = StyleSheet.create({
     fontSize: fontScale(15),
     marginBottom: verticalScale(15),
     color: 'black',
+    backgroundColor: colors.white,
+  },
+  buttonPadding: {
+    padding: 10,
   },
 });
 
