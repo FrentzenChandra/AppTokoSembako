@@ -10,6 +10,9 @@ import {
 const kasirStyle = StyleSheet.create({
   bgWhite: {
     backgroundColor: colors.white,
+  },
+  headerContainer: {
+    marginBottom: verticalScale(20),
     paddingBottom: verticalScale(10),
     paddingHorizontal: horizontalScale(20),
   },
@@ -50,6 +53,39 @@ const kasirStyle = StyleSheet.create({
   dropDownText: {
     fontSize: fontScale(15),
     textAlign: 'center',
+  },
+  productListContainer: {
+    borderRadius: verticalScale(5),
+    paddingBottom: verticalScale(5),
+    overflow: 'hidden',
+    marginHorizontal: horizontalScale(14),
+    marginBottom: verticalScale(20),
+    zIndex: 1,
+  },
+  productImg: {
+    height: verticalScale(88),
+    width: horizontalScale(146),
+    objectFit: 'cover',
+  },
+  productTitle: {
+    fontFamily: findFonts('Rubik', 500),
+    display: 'flex',
+    width: horizontalScale(146),
+    marginTop: verticalScale(5),
+    paddingHorizontal: horizontalScale(5),
+    marginBottom: verticalScale(20),
+  },
+  productInfoContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: horizontalScale(5),
+    justifyContent: 'space-between',
+  },
+  productStock: {
+    fontFamily: findFonts('Rubik', 500),
+  },
+  productPrice: {
+    fontFamily: findFonts('Rubik', 500),
+    color: colors.blueDark,
   },
 });
 

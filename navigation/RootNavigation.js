@@ -2,7 +2,7 @@
 // page yang boleh diakses
 // jika kita lihat bisa juga kita gunakan sebagai role divider
 import React, {useState, useEffect} from 'react';
-import {UnAuthicated} from './MainNavigation';
+import {UnAuthicated, Authincated} from './MainNavigation';
 // import {useSelector} from 'react-redux';
 
 const RootNavigation = () => {
@@ -13,7 +13,7 @@ const RootNavigation = () => {
   //     return <UnAuthicated />;
   //   }
 
-  return <UnAuthicated />;
+  return <Authincated />;
 };
 
 export default RootNavigation;
