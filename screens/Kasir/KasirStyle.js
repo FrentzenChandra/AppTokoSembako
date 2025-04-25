@@ -48,6 +48,7 @@ const kasirStyle = StyleSheet.create({
     backgroundColor: colors.white,
     width: horizontalScale(100),
     padding: 0,
+    zIndex: 12,
     alignSelf: 'center',
   },
   dropDownText: {
