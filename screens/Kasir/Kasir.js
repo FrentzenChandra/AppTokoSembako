@@ -39,9 +39,7 @@ const Kasir = ({navigation}) => {
   const [isSearchVisible, setIsSearchVisible] = useState(true);
   const [isDDownOpen, setIsDDownOpen] = useState(false);
 
-  const productCard = () => {
-    return <></>;
-  };
+  
 
   return (
     <SafeAreaView>

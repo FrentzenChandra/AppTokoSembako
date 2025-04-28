@@ -1,11 +1,152 @@
-import {SafeAreaView, Text} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  FlatList,
+  Image,
+  SafeAreaView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import globalStyle from '../../assets/style/style';
+import produkStyle from './ProdukStyle';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faBars} from '@fortawesome/free-solid-svg-icons/faBars';
+import colors from '../../assets/colors/colors';
 
-const produk = () => {
+import DropDownPicker from 'react-native-dropdown-picker';
+import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons/faMagnifyingGlass';
+import {
+  fontScale,
+  horizontalScale,
+  verticalScale,
+} from '../../assets/style/scaling';
+import findFonts from '../../assets/fonts/helper/helper';
+import {faPencil} from '@fortawesome/free-solid-svg-icons';
+import {faTrash} from '@fortawesome/free-solid-svg-icons/faTrash';
+
+const Produk = ({navigation}) => {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    {id: 0, label: 'Apple', value: 'apple'},
+    {id: 0, label: 'Apple', value: 'apple'},
+    {id: 0, label: 'Apple', value: 'apple'},
+    {id: 0, label: 'Apple', value: 'apple'},
+    {id: 0, label: 'Apple', value: 'apple'},
+    {id: 0, label: 'Apple', value: 'apple'},
+    {id: 0, label: 'Apple', value: 'apple'},
+  ]);
+  const [isSearchVisible, setIsSearchVisible] = useState(true);
+  const [isDDownOpen, setIsDDownOpen] = useState(false);
+
   return (
     <SafeAreaView>
-      <Text>Tes aja</Text>
+      <FlatList
+        ListHeaderComponent={
+          <View style={[produkStyle.bgWhite, produkStyle.headerContainer]}>
+            <View style={produkStyle.headerTitleContainer}>
+              <TouchableOpacity
+                style={globalStyle.buttonPadding}
+                onPress={() => {
+                  navigation.openDrawer();
+                }}>
+                <FontAwesomeIcon icon={faBars} color={colors.blue} size={24} />
+              </TouchableOpacity>
+              <Text style={produkStyle.headerText}>List Produk</Text>
+              <TouchableOpacity
+                style={globalStyle.buttonPadding}
+                onPress={() => {
+                  setIsSearchVisible(false);
+                }}>
+                <FontAwesomeIcon
+                  size={20}
+                  icon={faMagnifyingGlass}
+                  color={colors.blue}
+                />
+              </TouchableOpacity>
+              <TextInput
+                onSubmitEditing={() => {
+                  setIsSearchVisible(true);
+                }}
+                style={[
+                  isSearchVisible ? {display: 'none'} : {display: 'flex'},
+                  produkStyle.searchInput,
+                  globalStyle.input,
+                ]}
+              />
+            </View>
+            <View style={produkStyle.ruler}></View>
+            <DropDownPicker
+              containerProps={{
+                style: {
+                  height: isDDownOpen === true ? 220 : null,
+                },
+              }}
+              onClose={() => setIsDDownOpen(false)}
+              onOpen={() => setIsDDownOpen(true)}
+              open={open}
+              value={value}
+              items={items}
+              setOpen={setOpen}
+              setValue={setValue}
+              setItems={setItems}
+              autoScroll={true}
+              style={produkStyle.dropDown}
+              textStyle={produkStyle.dropDownText}
+            />
+          </View>
+        }
+        data={items}
+        key={({item}) => {
+          return item.id;
+        }}
+        renderItem={() => {
+          return (
+            <TouchableOpacity style={produkStyle.productContainer}>
+              <Image
+                source={require('../../assets/images/bulog.jpg')}
+                style={produkStyle.productImg}
+              />
+              <View style={produkStyle.productInfoCntr}>
+                <View>
+                  <Text style={produkStyle.productTitle}>Beras SPHP 5KG</Text>
+                  <Text style={produkStyle.productStock}>
+                    Stok :{' '}
+                    <Text
+                      style={{
+                        color: colors.red,
+                      }}>
+                      30
+                    </Text>
+                  </Text>
+                </View>
+                <Text style={produkStyle.productPrice}>Rp.160.000</Text>
+              </View>
+              <View style={produkStyle.productInfoCntr}>
+                <TouchableOpacity style={produkStyle.editContainer}>
+                  <View style={produkStyle.editIconContainer}>
+                    <FontAwesomeIcon
+                      color={colors.white}
+                      icon={faPencil}></FontAwesomeIcon>
+                  </View>
+                  <Text style={produkStyle.editText}>Hapus</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={produkStyle.deleteContainer}>
+                  <View style={produkStyle.deleteIconContainer}>
+                    <FontAwesomeIcon
+                      color={colors.white}
+                      icon={faTrash}></FontAwesomeIcon>
+                  </View>
+                  <Text style={produkStyle.deleteText}>Ubah</Text>
+                </TouchableOpacity>
+              </View>
+            </TouchableOpacity>
+          );
+        }}
+      />
     </SafeAreaView>
   );
 };
 
-export default produk;
+export default Produk;

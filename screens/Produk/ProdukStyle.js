@@ -7,7 +7,7 @@ import {
   verticalScale,
 } from '../../assets/style/scaling';
 
-const kasirStyle = StyleSheet.create({
+const produkStyle = StyleSheet.create({
   bgWhite: {
     backgroundColor: colors.white,
   },
@@ -55,39 +55,67 @@ const kasirStyle = StyleSheet.create({
     fontSize: fontScale(15),
     textAlign: 'center',
   },
-  productListContainer: {
-    borderRadius: verticalScale(5),
-    paddingBottom: verticalScale(5),
+  productContainer: {
+    marginHorizontal: horizontalScale(20),
+    height: verticalScale(160),
+    borderRadius: verticalScale(10),
+    backgroundColor: colors.white,
     overflow: 'hidden',
-    marginHorizontal: horizontalScale(14),
     marginBottom: verticalScale(20),
-    zIndex: 1,
   },
   productImg: {
-    height: verticalScale(88),
-    width: horizontalScale(146),
-    objectFit: 'cover',
+    height: verticalScale(90),
+    width: '100%',
+    objectFit: 'contain',
+    backgroundColor: colors.whiteGrey,
+    marginBottom: verticalScale(5),
+  },
+  productInfoCntr: {
+    flexDirection: 'row',
+    marginHorizontal: horizontalScale(10),
+    justifyContent: 'space-between',
+    marginBottom: verticalScale(5),
   },
   productTitle: {
     fontFamily: findFonts('Rubik', 500),
-    display: 'flex',
-    width: horizontalScale(146),
-    marginTop: verticalScale(5),
-    paddingHorizontal: horizontalScale(5),
-    marginBottom: verticalScale(20),
-  },
-  productInfoContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: horizontalScale(5),
-    justifyContent: 'space-between',
+    color: colors.black,
+    fontSize: 16,
   },
   productStock: {
     fontFamily: findFonts('Rubik', 500),
+    fontSize: 14,
   },
   productPrice: {
-    fontFamily: findFonts('Rubik', 500),
-    color: colors.blueDark,
+    fontFamily: findFonts('Rubik', 700),
+    color: colors.blue,
+    fontSize: 18,
+  },
+  editContainer: {flexDirection: 'row', alignItems: 'center'},
+  editIconContainer: {
+    padding: horizontalScale(5),
+    backgroundColor: colors.green,
+    borderRadius: horizontalScale(4),
+    overflow: 'hidden',
+    marginRight: horizontalScale(7),
+  },
+  editText: {
+    color: colors.green,
+    fontSize: fontScale(16),
+    fontFamily: findFonts('Rubik', 600),
+  },
+  deleteContainer: {flexDirection: 'row', alignItems: 'center'},
+  deleteIconContainer: {
+    padding: horizontalScale(5),
+    backgroundColor: colors.red,
+    borderRadius: horizontalScale(4),
+    overflow: 'hidden',
+    marginRight: horizontalScale(7),
+  },
+  deleteText: {
+    color: colors.red,
+    fontSize: fontScale(16),
+    fontFamily: findFonts('Rubik', 600),
   },
 });
 
-export default kasirStyle;
+export default produkStyle;
