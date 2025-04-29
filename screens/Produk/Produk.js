@@ -25,24 +25,60 @@ import findFonts from '../../assets/fonts/helper/helper';
 import {faPencil} from '@fortawesome/free-solid-svg-icons';
 import {faTrash} from '@fortawesome/free-solid-svg-icons/faTrash';
 
+const items = [
+  {id: 0, label: 'Apple', value: 'apple'},
+  {id: 0, label: 'Apple', value: 'apple'},
+  {id: 0, label: 'Apple', value: 'apple'},
+  {id: 0, label: 'Apple', value: 'apple'},
+  {id: 0, label: 'Apple', value: 'apple'},
+  {id: 0, label: 'Apple', value: 'apple'},
+  {id: 0, label: 'Apple', value: 'apple'},
+];
+
 const Produk = ({navigation}) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
-  const [items, setItems] = useState([
-    {id: 0, label: 'Apple', value: 'apple'},
-    {id: 0, label: 'Apple', value: 'apple'},
-    {id: 0, label: 'Apple', value: 'apple'},
-    {id: 0, label: 'Apple', value: 'apple'},
-    {id: 0, label: 'Apple', value: 'apple'},
-    {id: 0, label: 'Apple', value: 'apple'},
-    {id: 0, label: 'Apple', value: 'apple'},
-  ]);
   const [isSearchVisible, setIsSearchVisible] = useState(true);
   const [isDDownOpen, setIsDDownOpen] = useState(false);
+  const [productLoading, setProductLoading] = useState(false);
+  const [productCurrentPage, setproductCurrentPage] = useState(1);
+  const [productRenderedData, setproductRenderedData] = useState([]);
+  const pageSize = 4;
+  const pagination = (database, currentPage, pageSize) => {
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+
+    if (startIndex >= database.length) {
+      return [];
+    }
+
+    return database.slice(startIndex, endIndex);
+  };
+
+  useEffect(() => {
+    setProductLoading(true);
+    setproductCurrentPage(1);
+    setproductRenderedData(pagination(items, 1, pageSize));
+    setProductLoading(false);
+  }, []);
 
   return (
     <SafeAreaView>
       <FlatList
+        onEndReachedThreshold={0.7}
+        onEndReached={() => {
+          setProductLoading(true);
+          const dataToAppend = pagination(
+            items,
+            productCurrentPage + 1,
+            pageSize,
+          );
+
+          if (dataToAppend.length > 0) {
+            setproductCurrentPage(productCurrentPage + 1);
+            setproductRenderedData([...productRenderedData, ...dataToAppend]);
+          }
+        }}
         ListHeaderComponent={
           <View style={[produkStyle.bgWhite, produkStyle.headerContainer]}>
             <View style={produkStyle.headerTitleContainer}>
@@ -90,14 +126,13 @@ const Produk = ({navigation}) => {
               items={items}
               setOpen={setOpen}
               setValue={setValue}
-              setItems={setItems}
               autoScroll={true}
               style={produkStyle.dropDown}
               textStyle={produkStyle.dropDownText}
             />
           </View>
         }
-        data={items}
+        data={productRenderedData}
         key={({item}) => {
           return item.id;
         }}
@@ -136,7 +171,7 @@ const Produk = ({navigation}) => {
                   <View style={produkStyle.deleteIconContainer}>
                     <FontAwesomeIcon
                       color={colors.white}
-                      icon={faTrash}></FontAwesomeIcon>
+                      icon={faTrash}/>
                   </View>
                   <Text style={produkStyle.deleteText}>Ubah</Text>
                 </TouchableOpacity>

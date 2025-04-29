@@ -88,6 +88,31 @@ const kasirStyle = StyleSheet.create({
     fontFamily: findFonts('Rubik', 500),
     color: colors.blueDark,
   },
+  cartButton: {
+    backgroundColor: colors.blueDark,
+    width: '90%',
+    bottom: verticalScale(10),
+    height: verticalScale(45),
+    borderRadius: horizontalScale(5),
+    alignSelf: 'center',
+    paddingHorizontal: horizontalScale(20),
+    position: 'absolute',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  cartIcon: {
+    marginRight: horizontalScale(13),
+  },
+  cartInfoText: {
+    color: colors.white,
+    fontFamily: findFonts('Rubik', 600),
+    fontSize: fontScale(16),
+  },
+  cartInfoContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 });
 
 export default kasirStyle;
