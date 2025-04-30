@@ -6,6 +6,7 @@ import {faShoppingBag} from '@fortawesome/free-solid-svg-icons/faShoppingBag';
 import Kasir from '../screens/Kasir/Kasir';
 import {faRectangleList} from '@fortawesome/free-regular-svg-icons/faRectangleList';
 import Produk from '../screens/Produk/Produk';
+import Checkout from '../screens/Checkout/Checkout';
 
 const Tab = createBottomTabNavigator();
 

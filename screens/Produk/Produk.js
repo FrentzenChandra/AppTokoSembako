@@ -99,6 +99,7 @@ const Produk = ({navigation}) => {
                   size={20}
                   icon={faMagnifyingGlass}
                   color={colors.blue}
+                  style={{marginLeft: 'auto'}}
                 />
               </TouchableOpacity>
               <TextInput
@@ -169,9 +170,7 @@ const Produk = ({navigation}) => {
                 </TouchableOpacity>
                 <TouchableOpacity style={produkStyle.deleteContainer}>
                   <View style={produkStyle.deleteIconContainer}>
-                    <FontAwesomeIcon
-                      color={colors.white}
-                      icon={faTrash}/>
+                    <FontAwesomeIcon color={colors.white} icon={faTrash} />
                   </View>
                   <Text style={produkStyle.deleteText}>Ubah</Text>
                 </TouchableOpacity>

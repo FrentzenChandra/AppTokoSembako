@@ -19,6 +19,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons/faMagnifyingGlass';
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons/faCartShopping';
 import {horizontalScale} from '../../assets/style/scaling';
+import Routes from '../../navigation/Routes';
 
 const items = [
   {id: 0, label: 'Apple', value: 'apple'},
@@ -94,7 +95,7 @@ const Kasir = ({navigation}) => {
               </TouchableOpacity>
               <Text style={kasirStyle.headerText}>Kasir</Text>
               <TouchableOpacity
-                style={globalStyle.buttonPadding}
+                style={[globalStyle.buttonPadding]}
                 onPress={() => {
                   setIsSearchVisible(false);
                 }}>
@@ -102,6 +103,7 @@ const Kasir = ({navigation}) => {
                   size={20}
                   icon={faMagnifyingGlass}
                   color={colors.blue}
+                  style={{marginLeft: 'auto'}}
                 />
               </TouchableOpacity>
               <TextInput
@@ -161,7 +163,11 @@ const Kasir = ({navigation}) => {
           );
         }}
       />
-      <TouchableOpacity style={kasirStyle.cartButton}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate(Routes.Checkout);
+        }}
+        style={kasirStyle.cartButton}>
         <View style={kasirStyle.cartInfoContainer}>
           <FontAwesomeIcon
             size={horizontalScale(20)}

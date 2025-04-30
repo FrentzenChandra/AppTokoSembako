@@ -37,6 +37,8 @@ const globalStyle = StyleSheet.create({
   },
   buttonPadding: {
     padding: 10,
+    flex: 1,
+
   },
 });
 

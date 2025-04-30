@@ -10,16 +10,19 @@ import Signup from '../screens/Signup/Signup';
 // import Donate from '../screens/Donate/Donate';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import BottomNav from './BottomNavigation';
+import Checkout from '../screens/Checkout/Checkout';
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
 export const Authincated = () => {
   return (
-    <Drawer.Navigator screenOptions={{header: () => {}}}>
+    <Drawer.Navigator
+      screenOptions={{header: () => {}}}
+      initialRouteName={Routes.Checkout}>
       <Drawer.Screen name={Routes.Kasir} component={BottomNav} />
       <Drawer.Screen name={Routes.Produk} component={BottomNav} />
-
+      <Drawer.Screen name={Routes.Checkout} component={Checkout} />
     </Drawer.Navigator>
   );
 };
