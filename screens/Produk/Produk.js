@@ -22,7 +22,7 @@ import {
   verticalScale,
 } from '../../assets/style/scaling';
 import findFonts from '../../assets/fonts/helper/helper';
-import {faPencil} from '@fortawesome/free-solid-svg-icons';
+import {faPencil, faPlus} from '@fortawesome/free-solid-svg-icons';
 import {faTrash} from '@fortawesome/free-solid-svg-icons/faTrash';
 
 const items = [
@@ -64,6 +64,14 @@ const Produk = ({navigation}) => {
 
   return (
     <SafeAreaView>
+      <TouchableOpacity
+        style={produkStyle.addFloatingBtn}>
+        <FontAwesomeIcon
+          icon={faPlus}
+          color={colors.white}
+          size={horizontalScale(30)}
+        />
+      </TouchableOpacity>
       <FlatList
         onEndReachedThreshold={0.7}
         onEndReached={() => {

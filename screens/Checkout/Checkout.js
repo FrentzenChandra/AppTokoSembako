@@ -18,26 +18,19 @@ import {horizontalScale, verticalScale} from '../../assets/style/scaling';
 import findFonts from '../../assets/fonts/helper/helper';
 import {faPlus} from '@fortawesome/free-solid-svg-icons/faPlus';
 import {faMinus} from '@fortawesome/free-solid-svg-icons/faMinus';
-
-const items = [
-  {id: 0, label: 'Apple', value: 'apple'},
-  // {id: 1, label: 'Banana', value: 'banana'},
-  // {id: 2, label: 'Banana', value: 'banana'},
-  // {id: 3, label: 'Banana', value: 'banana'},
-  // {id: 4, label: 'Banana', value: 'banana'},
-  // {id: 5, label: 'Banana', value: 'banana'},
-  // {id: 6, label: 'Banana', value: 'banana'},
-  // {id: 7, label: 'Banana', value: 'banana'},
-  // {id: 8, label: 'Banana', value: 'banana'},
-  // {id: 9, label: 'Banana', value: 'banana'},
-  // {id: 10, label: 'Banana', value: 'banana'},
-  // {id: 11, label: 'Banana', value: 'banana'},
-  // {id: 12, label: 'Banana', value: 'banana'},
-  // {id: 13, label: 'Banana', value: 'banana'},
-];
+import {
+  formatCurrency,
+  getSupportedCurrencies,
+} from 'react-native-format-currency';
 
 const Checkout = ({navigation}) => {
   const [isSearchVisible, setIsSearchVisible] = useState(true);
+  const [itemsList, setitemsList] = useState([
+    {id: 0, name: 'Beras SPHP', stock: '20', qty: '10', harga: 250000},
+    {id: 1, name: 'Beras SPHP', stock: '20', qty: '10', harga: 250000},
+  ]);
+  const [inputValue, setinputValue] = useState();
+  const [refresh, setrefresh] = useState();
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={[checkoutStyle.bgWhite, checkoutStyle.headerContainer]}>
@@ -54,34 +47,78 @@ const Checkout = ({navigation}) => {
         </View>
       </View>
       <FlatList
-        data={items}
-        renderItem={() => {
+        data={itemsList}
+        renderItem={data => {
+          const [
+            valueFormattedWithSymbol,
+            valueFormattedWithoutSymbol,
+            symbol,
+          ] = formatCurrency({
+            amount: Number(data.item.harga),
+            code: 'IDR',
+          });
           return (
-            <TouchableOpacity style={checkoutStyle.itemContainer}>
+            <View style={checkoutStyle.itemContainer}>
               <Image
                 style={checkoutStyle.itemImage}
                 source={require('../../assets/images/bulog.jpg')}
               />
               <View style={checkoutStyle.itemInfoCntr}>
                 <Text style={checkoutStyle.itemInfoTextStyle}>
-                  Beras SPHP 5 Kg
+                  {data.item.name}
                 </Text>
                 <Text style={checkoutStyle.itemInfoTextStyle}>
-                  Stok : <Text>30</Text>
+                  Stok : {data.item.stock}
                 </Text>
                 <Text style={checkoutStyle.itemPrice}>
-                  Rp. <Text>250.000</Text>
+                  {valueFormattedWithSymbol}
                 </Text>
               </View>
               <View style={checkoutStyle.itemQty}>
-                <TouchableOpacity style={checkoutStyle.plusButton}>
-                  <FontAwesomeIcon icon={faPlus} />
+                <TouchableOpacity
+                  style={checkoutStyle.plusButton}
+                  onPress={() => {
+                    let newData = itemsList;
+                    newData[data.index].qty = newData[data.index].qty + 1;
+                    if (newData[data.index].qty > data.item.stock) {
+                      newData[data.index].qty = data.item.stock;
+                    }
+                    setitemsList(newData);
+                    setrefresh(Math.random());
+                  }}>
+                  <FontAwesomeIcon icon={faPlus} color={colors.white} />
                 </TouchableOpacity>
-                <TouchableOpacity style={checkoutStyle.minusButton}>
-                  <FontAwesomeIcon icon={faMinus} />
+                <TextInput
+                  keyboardType="numeric"
+                  style={checkoutStyle.qtyInput}
+                  onChangeText={input => {
+                    let newData = itemsList;
+                    newData[data.index].qty = Number(input);
+
+                    if (Number(input) > data.item.stock) {
+                      newData[data.index].qty = data.item.stock;
+                    }
+
+                    setitemsList(newData);
+                    setrefresh(Math.random());
+                  }}
+                  value={itemsList[data.index].qty.toString()}
+                />
+                <TouchableOpacity
+                  style={checkoutStyle.minusButton}
+                  onPress={() => {
+                    let newData = itemsList;
+                    newData[data.index].qty = newData[data.index].qty - 1;
+                    if (newData[data.index].qty < 0) {
+                      newData[data.index].qty = 0;
+                    }
+                    setitemsList(newData);
+                    setrefresh(Math.random());
+                  }}>
+                  <FontAwesomeIcon icon={faMinus} color={colors.white} />
                 </TouchableOpacity>
               </View>
-            </TouchableOpacity>
+            </View>
           );
         }}
       />

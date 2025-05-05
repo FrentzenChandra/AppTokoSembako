@@ -51,23 +51,23 @@ const checkoutStyle = StyleSheet.create({
   itemContainer: {
     alignSelf: 'center',
     backgroundColor: colors.white,
-    marginHorizontal: horizontalScale(10),
     height: horizontalScale(120),
     width: horizontalScale(320),
     borderRadius: horizontalScale(8),
     flexDirection: 'row',
     overflow: 'hidden',
     elevation: 4,
+    marginBottom: verticalScale(20),
   },
   itemImage: {
-    width: '35%',
+    width: '30%',
     height: horizontalScale(120),
     objectFit: 'contain',
-    backgroundColor: colors.whiteGrey,
     marginRight: horizontalScale(10),
   },
   itemInfoCntr: {
     marginTop: verticalScale(10),
+    width: horizontalScale(115),
   },
   itemPrice: {
     marginTop: 'auto',
@@ -78,25 +78,41 @@ const checkoutStyle = StyleSheet.create({
 
   itemInfoTextStyle: {
     fontFamily: findFonts('Rubik', 500),
-    fontSize: fontScale(16),
+    fontSize: fontScale(17),
   },
   itemQty: {
     marginTop: 'auto',
     marginBottom: verticalScale(12),
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   plusButton: {
     backgroundColor: colors.green,
-    padding: horizontalScale(2),
+    padding: horizontalScale(5),
     borderRadius: horizontalScale(5),
-    marginRight: 15,
+    marginRight: 10,
+    elevation: 2,
   },
   minusButton: {
     backgroundColor: colors.red,
-    padding: horizontalScale(2),
+    padding: horizontalScale(5),
     borderRadius: horizontalScale(5),
-    marginLeft: 15,
+    marginLeft: 10,
+    elevation: 2,
+  },
+  qtyInput: {
+    borderColor: colors.black,
+    borderWidth: 1,
+    height: horizontalScale(35),
+    width: horizontalScale(28),
+    borderRadius: 5,
+    color: colors.black,
+    fontSize: fontScale(16),
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    padding: 0,
+    fontFamily: findFonts('Rubik', 600),
   },
 });
 
