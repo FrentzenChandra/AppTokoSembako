@@ -7,6 +7,7 @@ import Kasir from '../screens/Kasir/Kasir';
 import {faRectangleList} from '@fortawesome/free-regular-svg-icons/faRectangleList';
 import Produk from '../screens/Produk/Produk';
 import Checkout from '../screens/Checkout/Checkout';
+import AddProduk from '../screens/Produk/AddProduk/AddProduk';
 
 const Tab = createBottomTabNavigator();
 

@@ -64,8 +64,7 @@ const Produk = ({navigation}) => {
 
   return (
     <SafeAreaView>
-      <TouchableOpacity
-        style={produkStyle.addFloatingBtn}>
+      <TouchableOpacity style={produkStyle.addFloatingBtn}>
         <FontAwesomeIcon
           icon={faPlus}
           color={colors.white}
@@ -81,7 +80,6 @@ const Produk = ({navigation}) => {
             productCurrentPage + 1,
             pageSize,
           );
-
           if (dataToAppend.length > 0) {
             setproductCurrentPage(productCurrentPage + 1);
             setproductRenderedData([...productRenderedData, ...dataToAppend]);

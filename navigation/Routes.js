@@ -4,6 +4,7 @@ const Routes = {
   Kasir: 'Kasir',
   Produk: 'Produk',
   Checkout: 'Checkout',
+  AddProduk: 'Add Produk',
 };
 
 export default Routes;
